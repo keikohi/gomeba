@@ -1,0 +1,123 @@
+                digraph " D: "  {
+                    rankdir=LR
+                    bgcolor ="#061A2B"
+                    fontcolor = white
+                    fontname = meiryo
+                    fontsize =20
+                    ranksep = 2
+                    nodesep = 0.4
+                    subgraph "cluster_dev" {
+                    subgraph "cluster_go" {
+                        subgraph "cluster_anko-master" {
+                        subgraph "cluster_anko-master" {
+                            "D:\dev\go\anko-master\anko-master\anko.go" [label="anko.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            subgraph "cluster_ast" {
+                            "D:\dev\go\anko-master\anko-master\ast\ast.go" [label="ast.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            subgraph "cluster_astutil" {
+                                "D:\dev\go\anko-master\anko-master\ast\astutil\walk.go" [label="walk.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                                label="astutil" color="#3B9FED"
+                            }
+                            "D:\dev\go\anko-master\anko-master\ast\doc.go" [label="doc.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\ast\expr.go" [label="expr.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\ast\operator.go" [label="operator.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\ast\pos.go" [label="pos.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\ast\stmt.go" [label="stmt.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            label="ast" color="#3B9FED"
+                            }
+                            subgraph "cluster_cmd" {
+                            subgraph "cluster_anko-package-gen" {
+                                "D:\dev\go\anko-master\anko-master\cmd\anko-package-gen\main.go" [label="main.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                                label="anko-package-gen" color="#3B9FED"
+                            }
+                            label="cmd" color="#3B9FED"
+                            }
+                            subgraph "cluster_core" {
+                            "D:\dev\go\anko-master\anko-master\core\core.go" [label="core.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\core\toX.go" [label="toX.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            label="core" color="#3B9FED"
+                            }
+                            subgraph "cluster_env" {
+                            "D:\dev\go\anko-master\anko-master\env\env.go" [label="env.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\env\envTypes.go" [label="envTypes.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\env\envValues.go" [label="envValues.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            label="env" color="#3B9FED"
+                            }
+                            subgraph "cluster_misc" {
+                            subgraph "cluster_wasm" {
+                                "D:\dev\go\anko-master\anko-master\misc\wasm\anko.go" [label="anko.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                                label="wasm" color="#3B9FED"
+                            }
+                            label="misc" color="#3B9FED"
+                            }
+
+                            subgraph "cluster_parser" {
+                            "D:\dev\go\anko-master\anko-master\parser\lexer.go" [label="lexer.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\parser\parser.go" [label="parser.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            label="parser" color="#3B9FED"
+                            }
+                            subgraph "cluster_vm" {
+                            "D:\dev\go\anko-master\anko-master\vm\doc.go" [label="doc.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vm.go" [label="vm.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmConvertToX.go" [label="vmConvertToX.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmConvertToXGo112.go" [label="vmConvertToXGo112.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmConvertToXNotGo112.go" [label="vmConvertToXNotGo112.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmExpr.go" [label="vmExpr.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmExprFunction.go" [label="vmExprFunction.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmLetExpr.go" [label="vmLetExpr.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmOperator.go" [label="vmOperator.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmStmt.go" [label="vmStmt.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            "D:\dev\go\anko-master\anko-master\vm\vmToX.go" [label="vmToX.go",penwidth=0.6, color="#395070", style=filled, fontcolor=white, fontsize=18, size=30, fontname=meiryo]
+                            label="vm" color="#3B9FED"
+                            }
+                            label="anko-master" color="#3B9FED"
+                        }
+                        label="anko-master" color="#3B9FED"
+                        }
+                        label="go" color="#3B9FED"
+                    }
+                    label="dev" color="#3B9FED"
+                    }
+                    "D:\dev\go\anko-master\anko-master\anko.go" -> "D:\dev\go\anko-master\anko-master\core\core.go" [ penwidth=1.5, color=white1]
+                    "D:\dev\go\anko-master\anko-master\anko.go" -> "D:\dev\go\anko-master\anko-master\env\env.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\anko.go" -> "D:\dev\go\anko-master\anko-master\parser\lexer.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\anko.go" -> "D:\dev\go\anko-master\anko-master\vm\vm.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\anko.go" -> "D:\dev\go\anko-master\anko-master\vm\vmStmt.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\ast\astutil\walk.go" -> "D:\dev\go\anko-master\anko-master\ast\expr.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\ast\astutil\walk.go" -> "D:\dev\go\anko-master\anko-master\ast\operator.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\ast\astutil\walk.go" -> "D:\dev\go\anko-master\anko-master\ast\stmt.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\core\core.go" -> "D:\dev\go\anko-master\anko-master\env\env.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\core\core.go" -> "D:\dev\go\anko-master\anko-master\parser\lexer.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\core\core.go" -> "D:\dev\go\anko-master\anko-master\parser\parser.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\core\core.go" -> "D:\dev\go\anko-master\anko-master\vm\vmStmt.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\core\toX.go" -> "D:\dev\go\anko-master\anko-master\env\env.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\misc\wasm\anko.go" -> "D:\dev\go\anko-master\anko-master\core\core.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\misc\wasm\anko.go" -> "D:\dev\go\anko-master\anko-master\parser\lexer.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\misc\wasm\anko.go" -> "D:\dev\go\anko-master\anko-master\vm\vm.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\misc\wasm\anko.go" -> "D:\dev\go\anko-master\anko-master\vm\vmStmt.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\parser\lexer.go" -> "D:\dev\go\anko-master\anko-master\ast\ast.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\parser\lexer.go" -> "D:\dev\go\anko-master\anko-master\ast\expr.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\parser\lexer.go" -> "D:\dev\go\anko-master\anko-master\ast\pos.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\parser\lexer.go" -> "D:\dev\go\anko-master\anko-master\ast\stmt.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\parser\parser.go" -> "D:\dev\go\anko-master\anko-master\ast\ast.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\parser\parser.go" -> "D:\dev\go\anko-master\anko-master\ast\expr.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\parser\parser.go" -> "D:\dev\go\anko-master\anko-master\ast\operator.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\parser\parser.go" -> "D:\dev\go\anko-master\anko-master\ast\stmt.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vm.go" -> "D:\dev\go\anko-master\anko-master\ast\ast.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vm.go" -> "D:\dev\go\anko-master\anko-master\ast\expr.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vm.go" -> "D:\dev\go\anko-master\anko-master\ast\operator.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vm.go" -> "D:\dev\go\anko-master\anko-master\ast\pos.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vm.go" -> "D:\dev\go\anko-master\anko-master\ast\stmt.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vm.go" -> "D:\dev\go\anko-master\anko-master\env\env.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmExpr.go" -> "D:\dev\go\anko-master\anko-master\ast\expr.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmExpr.go" -> "D:\dev\go\anko-master\anko-master\env\env.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmExpr.go" -> "D:\dev\go\anko-master\anko-master\env\envValues.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmExprFunction.go" -> "D:\dev\go\anko-master\anko-master\ast\expr.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmLetExpr.go" -> "D:\dev\go\anko-master\anko-master\ast\expr.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmLetExpr.go" -> "D:\dev\go\anko-master\anko-master\env\env.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmLetExpr.go" -> "D:\dev\go\anko-master\anko-master\env\envValues.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmOperator.go" -> "D:\dev\go\anko-master\anko-master\ast\operator.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmStmt.go" -> "D:\dev\go\anko-master\anko-master\ast\stmt.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmStmt.go" -> "D:\dev\go\anko-master\anko-master\env\env.go" [ penwidth=1.5, color=white]
+                    "D:\dev\go\anko-master\anko-master\vm\vmStmt.go" -> "D:\dev\go\anko-master\anko-master\parser\lexer.go" [ penwidth=1.5, color=white]
+                    label="D:" color="#3B9FED"
+                }
