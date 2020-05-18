@@ -193,6 +193,9 @@ export default {
                     ellipse.classList.toggle("focusNode")
                 })
             });
+            const paths = document.getElementsByTagName("path");
+            console.log("paths: ");
+            
             svgDOM.addEventListener("mousedown", e => {
                 this.isMouseDown = true;
                 this.preXPos = e.offsetX
@@ -352,4 +355,5 @@ path:hover {
 .edge,.node{
     cursor: pointer;
 }
+
 </style>

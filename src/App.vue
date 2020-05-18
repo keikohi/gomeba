@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div id="menu" class="ui pointing menu massive">
-            <div class="item" >DepenGo</div>
+            <div class="item" >Gomeba</div>
         </div>
         <div class="ui grid">
             <div id = "packageView" class="three wide column padded" >
@@ -18,7 +18,7 @@
 
 <script>
 import Test from "./components/Test.vue";
-import Viz from "./components/Viz.vue";
+import Viz from "./components/viz.vue";
 import PackageTree from "./components/packageTree.vue"
 export default {
     name: "app",

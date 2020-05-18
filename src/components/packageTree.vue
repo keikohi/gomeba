@@ -98,12 +98,6 @@ export default {
 </script>
 
 <style scoped>
-/* .ui.list .list > .item .header,
-.ui.list > .item .header,
-i.icon.file {
-    color: #777777;
-} */
-
 .file {
     color: #777777 !important;
 }
