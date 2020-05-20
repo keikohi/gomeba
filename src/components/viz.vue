@@ -14,6 +14,7 @@
                     // nodesep = 0.4
 import dot from 'graphlib-dot'
 import Graph from 'graphlib'
+import Digraph from '../dot/digraph'
 export default {
     data() {
         return {
@@ -157,11 +158,11 @@ export default {
         // First, kicking watch:input()
         this.input = this.originalInput
         const digraph = dot.read(this.originalInput)
-        console.log(digraph);
         const packageList = digraph.nodes().filter( nodeName => nodeName.includes("cluster_")).map(e => e.replace("cluster_",""))
         this.$store.commit("setPackageList", packageList);
         const packageTree = this.createPackageTree(digraph)
         this.$store.commit("setPackageTree", packageTree)
+        this.isolatedNodes(digraph)
     },
     methods: {
         initializeSVGView(){
@@ -329,6 +330,10 @@ export default {
                 .forEach(name => digraph.removeNode(name))        
             return dot.write(digraph);
         },
+        isolatedNodes(digraph){
+            const dg = new Digraph(digraph)
+            console.log(dg.isolatedNodeNames());
+        }
 
     }
 };
@@ -386,6 +391,7 @@ text{
 .cluster > text{
     font-size: 1.75em;
     fill: rgb(181, 200, 214);
-    font-weight: 500;
+    font-weight: bold;
+    text-decoration:underline;
 }
 </style>

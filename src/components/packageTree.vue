@@ -123,14 +123,14 @@ export default {
 }
 
 .focusedPackage {
-    background-color: rgba(53, 61, 65, 0.431);
+    background-color: rgba(53, 61, 65, 0.5);
     border-radius: 5px;
 }
 .folder, .eye {
     cursor: pointer;
 }
 .header:hover,.eye:hover {
-    background-color: rgba(53, 61, 65, 0.431);
+    background-color: rgba(53, 61, 65, 0.5);
     color: #e7e7e7 !important;
 }
 .list {
