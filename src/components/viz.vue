@@ -25,8 +25,8 @@ export default {
                     fontcolor = white
                     fontname = meiryo
                     fontsize =20
-                    ranksep = 2
-                    nodesep = 0.4
+                    ranksep = 1.5
+                    nodesep = 0.3
      subgraph "cluster_dev" {
        subgraph "cluster_go" {
          subgraph "cluster_gin-master" {
@@ -191,10 +191,10 @@ export default {
                 node.addEventListener("click", e => {
                     console.log("clidked: ", ellipse);
                     ellipse.classList.toggle("focusNode")
+                    const nodeText = node.getElementsByTagName("text")[0]
+                    nodeText.classList.toggle("focusNodeText")
                 })
             });
-            const paths = document.getElementsByTagName("path");
-            console.log("paths: ");
             
             svgDOM.addEventListener("mousedown", e => {
                 this.isMouseDown = true;
@@ -336,24 +336,55 @@ export default {
 
 <style >
 .focusPath {
-    stroke: red;
+    stroke: #EECC22;
+    stroke-width: .2em;
 }
-.focusPolygon {
-    fill: red;
-    stroke: red;
+polygon.focusPolygon {
+    fill: #EECC22;
+    stroke: #EECC22;
+    width: 10em ;
 }
 #g {
-    font-size: 30px;
+    font-size: 60px;
 }
-path:hover {
-    stroke: red;
+path:hover  {
+    stroke: #EECC22;
+    stroke-width: 0.2em;
+}
+ellipse{
+    stroke-width: 0.15em;
+}
+path{
+    stroke-width: 0.1em;
+}
+.edge > polygon{
+    stroke-width: 0.2em;
+}
+.cluster > polygon {
+    stroke-width: 0.125em;
 }
 
 .focusNode {
-    fill: red;
+    fill: #EECC22;
+    stroke-width: 0.5em;
+    stroke: #EECC22;
 }
 .edge,.node{
     cursor: pointer;
 }
+text{
+    font-size: 1.5em;
+    font-weight: 200;
+}
+.focusNodeText{
+    fill: black;
+    font-size: 1.5em;
+    font-weight: 600;
+}
 
+.cluster > text{
+    font-size: 2em;
+    fill: #99BCE2;
+    font-weight: 500;
+}
 </style>

@@ -64,6 +64,10 @@ body, #menu{
     background-color: #061A2B;
     font-family:  "Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","Meiryo","メイリオ","sans-serif";
 }
+#packageView{
+    background-color: #13242D;
+    border-radius: 10px;
+}
 .ui.menu .item {
     color: white;
 }
