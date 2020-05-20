@@ -13,7 +13,7 @@
         </div>
         <div class="content" :class="focusedPackage()">
             <div class="header" :class="iconType(packages)" v-on:click="showChildren($event)">
-                <i class="icon" v-if="isDir" :class="iconType(packages)"></i>
+                <i class="icon" v-if="isDir" :class="openFolderClass" ></i>
                 {{packages.showName}}
             </div>
             <div v-if="packages.childs !== void 0 && isShowChildren">
@@ -42,6 +42,17 @@ export default {
             isShowChildren: false
         };
     },
+    computed: {
+        openFolderClass(){
+            if(!this.isFolder(this.packages)){
+                return "file"
+            }
+            if(this.isShowChildren){
+                return "open folder"
+            }
+            return "folder"
+        }
+    }, 
     created() {
         this.isDir = this.packages.childs !== void 0;
     },
@@ -98,31 +109,32 @@ export default {
 </script>
 
 <style scoped>
-.file {
-    color: #777777 !important;
-}
+
+/* div.context.nonFocusedPackage {
+    color: red ;
+} */
 
 .folder > .icon {
-    color: white !important;
+    color: #242A3C !important;
 }
 
 .folder {
-    color: white !important;
+    color: #242A3C !important;
 }
 
 .focusedPackage {
-    background-color: #133b5b;
+    background-color: rgba(53, 61, 65, 0.431);
     border-radius: 5px;
 }
-.folder,
-.eye {
+.folder, .eye {
     cursor: pointer;
 }
-.header:hover,
-.eye:hover {
-    background-color: rgb(53, 61, 65);
+.header:hover,.eye:hover {
+    background-color: rgba(53, 61, 65, 0.431);
+    color: #e7e7e7 !important;
 }
 .list {
     padding: 0.25em 0 0 0.7em !important;
 }
+
 </style>

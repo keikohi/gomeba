@@ -362,6 +362,7 @@ path{
 }
 .cluster > polygon {
     stroke-width: 0.125em;
+    stroke: #3B9FED;
 }
 
 .focusNode {
@@ -383,8 +384,8 @@ text{
 }
 
 .cluster > text{
-    font-size: 2em;
-    fill: #99BCE2;
+    font-size: 1.75em;
+    fill: rgb(181, 200, 214);
     font-weight: 500;
 }
 </style>
