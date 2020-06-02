@@ -2,13 +2,13 @@
     <div class="item">
         <div class="right floated content">
             <div
-                v-if="isDir"
+                v-if="isDir&&hasFiles"
                 class="ui small"
                 :class="iconType(packages)"
                 v-on:click="showPackage(packages.name, $event)"
             >
-                <i v-if="isShow" class="icon circle outline"></i>
-                <i v-if="!isShow" class="icon circle check"></i>
+                <i v-if="!isShow" class="icon circle outline"></i>
+                <i v-if="isShow" class="icon circle check"></i>
             </div>
         </div>
         <div class="content" :class="focusedPackage()">
@@ -16,7 +16,7 @@
                 <i class="icon" v-if="isDir" :class="openFolderClass" ></i>
                 {{packages.showName}}
             </div>
-            <div v-if="packages.childs !== void 0 && isShowChildren">
+            <div v-if="!isLastNode() && isShowChildren">
                 <div
                     class="list"
                     :class="iconType(packages)"
@@ -35,6 +35,15 @@
 import PackageTree from "./packageTree.vue";
 export default {
     name: "PackageTree",
+    components: {
+        PackageTree
+    },
+    props: {
+        packages: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {
             isShow: false,
@@ -51,20 +60,17 @@ export default {
                 return "open folder"
             }
             return "folder"
+        },
+        hasFiles(){
+            const files = this.packages.childs.filter(e =>!e.name.includes("cluster_"));
+            return files.length > 0
         }
     }, 
     created() {
         this.isDir = this.packages.childs !== void 0;
+        this.isShowChildren = this.isDeepestDir()
     },
-    components: {
-        PackageTree
-    },
-    props: {
-        packages: {
-            type: Object,
-            required: true
-        }
-    },
+
     methods: {
         // First File then Folder.
         ordering(childs) {
@@ -102,6 +108,17 @@ export default {
                 this.isShowChildren = !this.isShowChildren;
                 event.stopPropagation();
             }
+        },
+        isLastNode(){
+            return this.packages.childs === void 0
+        },
+        isDeepestDir(){
+            if(!this.isLastNode()){
+                const dirs = this.packages.childs.filter(e =>e.name.includes("cluster_"));
+                const files = this.packages.childs.filter(e =>!e.name.includes("cluster_"));
+                return  files.length === 0 || dirs.length > 0
+            }
+            return false
         }
     }
 };
