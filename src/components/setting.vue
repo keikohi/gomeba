@@ -3,12 +3,23 @@
         <div class="item" v-on:click="toggleInternalFiles()">
             <div class="right floated content">
                 <div class="ui">
-                    <i v-if="!isShow" class="icon circle outline"></i>
-                    <i v-if="isShow" class="icon circle check"></i>
+                    <i v-if="!hideInternalFiles" class="icon circle outline"></i>
+                    <i v-if="hideInternalFiles" class="icon circle check"></i>
                 </div>
             </div>
             <div class="content">
                 <div class="header">Hide Internal Files</div>
+            </div>
+        </div>
+        <div class="item" v-on:click="toggleShowAllPackages()">
+            <div class="right floated content">
+                <div class="ui">
+                    <i v-if="!showAllPackages" class="icon circle outline"></i>
+                    <i v-if="showAllPackages" class="icon circle check"></i>
+                </div>
+            </div>
+            <div class="content">
+                <div class="header">Show All Packages</div>
             </div>
         </div>
     </div>
@@ -18,13 +29,18 @@
 export default {
     data() {
         return {
-            isShow: false
+            hideInternalFiles: true,
+            showAllPackages: true
         };
     },
     methods: {
         toggleInternalFiles() {
-            this.isShow=!this.isShow
-            this.$store.commit("toggleShowInternalFiles", this.isShow)
+            this.hideInternalFiles = !this.hideInternalFiles;
+            this.$store.commit("toggleShowInternalFiles",this.hideInternalFiles);
+        },
+        toggleShowAllPackages() {
+            this.showAllPackages = !this.showAllPackages;
+            this.$store.commit("setShowAllPackages",this.showAllPackages);
         }
     }
 };

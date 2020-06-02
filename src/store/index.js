@@ -10,7 +10,8 @@ export default new Vuex.Store({
       packageList: [],
       packageTree: `{ "name":"now laoding", "showName": "now loading","childs": []}`,
       showPackages: [],
-      showInternalFiles: false
+      showInternalFiles: true,
+      showAllPackages: true,
     },
     mutations: {
       updateWidth(state, width) {
@@ -36,6 +37,9 @@ export default new Vuex.Store({
       },
       toggleShowInternalFiles(state, showInternalFiles){
         state.showInternalFiles = showInternalFiles
+      },
+      setShowAllPackages(state, showAllPackages){
+        state.showAllPackages = showAllPackages
       }
     },
     getters:{
@@ -56,6 +60,9 @@ export default new Vuex.Store({
       },
       showInternalFiles(state){
         return state.showInternalFiles
+      },
+      showAllPackages(state){
+        return state.showAllPackages
       }
     },
     actions: {
