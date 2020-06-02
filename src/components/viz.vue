@@ -140,10 +140,15 @@ export default {
     computed: {
         svg() {
             const showPackages = this.$store.getters.showPackages
-            if (showPackages.length > 0){
-                const digraph = dot.read(this.originalInput)
-                this.input = this.focusPackages(digraph, showPackages)
-            }
+            const isShowInternalFiles = this.$store.getters.showInternalFiles
+            // if (showPackages.length > 0){
+            //     var digraph = dot.read(this.originalInput)
+            //     digraph = this.focusPackages(digraph, showPackages)
+            //     this.input = dot.write(this.digraph);
+            // }
+                var digraph = dot.read(this.originalInput)
+                digraph = this.displayGraph(digraph, showPackages, isShowInternalFiles)
+                this.input = dot.write(digraph);
             return Viz(this.input,{ format: "svg" });
         }
     },
@@ -152,17 +157,19 @@ export default {
             this.initializeSVGView()
         }
     },
-    mounted() {        
+    mounted() {
     },
     created(){
-        // First, kicking watch:input()
-        this.input = this.originalInput
-        const digraph = dot.read(this.originalInput)
+        const isHideIsolatedNode = this.$store.getters.showInternalFiles
+        const selectedPackages = new Array()
+        let digraph = dot.read(this.originalInput)
+        digraph = this.displayGraph(digraph, selectedPackages, isHideIsolatedNode)
+        this.input = dot.write(digraph)
+
         const packageList = digraph.nodes().filter( nodeName => nodeName.includes("cluster_")).map(e => e.replace("cluster_",""))
         this.$store.commit("setPackageList", packageList);
         const packageTree = this.createPackageTree(digraph)
         this.$store.commit("setPackageTree", packageTree)
-        this.isolatedNodes(digraph)
     },
     methods: {
         initializeSVGView(){
@@ -190,13 +197,11 @@ export default {
                 }
                 const ellipse = node.getElementsByTagName("ellipse")[0];
                 node.addEventListener("click", e => {
-                    console.log("clidked: ", ellipse);
                     ellipse.classList.toggle("focusNode")
                     const nodeText = node.getElementsByTagName("text")[0]
                     nodeText.classList.toggle("focusNodeText")
                 })
             });
-            
             svgDOM.addEventListener("mousedown", e => {
                 this.isMouseDown = true;
                 this.preXPos = e.offsetX
@@ -328,12 +333,28 @@ export default {
                 .nodes()
                 .filter(name => !parentList.includes(name) && !showNodesName.includes(name))
                 .forEach(name => digraph.removeNode(name))        
-            return dot.write(digraph);
+            return digraph
         },
-        isolatedNodes(digraph){
+
+        hideIsolatedNodes(digraph, flag){
+            if(!flag){
+                return digraph
+            }
             const dg = new Digraph(digraph)
-            console.log(dg.isolatedNodeNames());
-        }
+            dg.removeIsolatedNodes()
+            dg.removeEmptyPackages()
+            return dg.result()
+        },
+        focusSelectedPackageNodes(digraph,  showPackages){
+            if(showPackages.length <= 0){
+                return digraph
+            }
+            return this.focusPackages(digraph, showPackages)
+        },
+        displayGraph(digraph, showPackages, isHideIsolatedNode){
+            digraph = this.hideIsolatedNodes(digraph, isHideIsolatedNode)
+            return this.focusSelectedPackageNodes(digraph, showPackages)
+        },
 
     }
 };

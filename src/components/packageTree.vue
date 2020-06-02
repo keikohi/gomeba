@@ -7,8 +7,8 @@
                 :class="iconType(packages)"
                 v-on:click="showPackage(packages.name, $event)"
             >
-                <i v-if="isShow" class="icon eye"></i>
-                <i v-if="!isShow" class="icon eye slash"></i>
+                <i v-if="isShow" class="icon circle outline"></i>
+                <i v-if="!isShow" class="icon circle check"></i>
             </div>
         </div>
         <div class="content" :class="focusedPackage()">
@@ -80,7 +80,6 @@ export default {
             return result;
         },
         isFolder(packages) {
-            console.log("childs:", packages.childs);
             return packages.childs !== void 0;
         },
         iconType(packages) {
@@ -123,18 +122,18 @@ export default {
 }
 
 .focusedPackage {
-    background-color: rgba(53, 61, 65, 0.5);
+    background-color: rgba(85, 92, 95, 0.226);
     border-radius: 5px;
 }
 .folder, .eye {
     cursor: pointer;
 }
 .header:hover,.eye:hover {
-    background-color: rgba(53, 61, 65, 0.5);
+    background-color: rgba(53, 61, 65, 0.692);
     color: #e7e7e7 !important;
 }
 .list {
-    padding: 0.25em 0 0 0.7em !important;
+    padding: 0.4em 0 0 0.7em !important;
 }
 
 </style>
