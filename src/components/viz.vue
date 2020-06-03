@@ -141,20 +141,16 @@ export default {
         svg() {
             const showPackages = this.$store.getters.showPackages
             const isShowInternalFiles = this.$store.getters.showInternalFiles
-            // if (showPackages.length > 0){
-            //     var digraph = dot.read(this.originalInput)
-            //     digraph = this.focusPackages(digraph, showPackages)
-            //     this.input = dot.write(this.digraph);
-            // }
-                var digraph = dot.read(this.originalInput)
-                digraph = this.displayGraph(digraph, showPackages, isShowInternalFiles)
-                this.input = dot.write(digraph);
+            var digraph = dot.read(this.originalInput)
+            digraph = this.displayGraph(digraph, showPackages, isShowInternalFiles)
+            this.input = dot.write(digraph);
             return Viz(this.input,{ format: "svg" });
         }
     },
     watch:{
         input(val){
-            this.initializeSVGView()
+            const focusPackages = this.$store.getters.showPackages
+            this.initializeSVGView(focusPackages)
         }
     },
     mounted() {
@@ -172,7 +168,7 @@ export default {
         this.$store.commit("setPackageTree", packageTree)
     },
     methods: {
-        initializeSVGView(){
+        initializeSVGView(focusPackages){
             const svgDOM = this.$refs["svgdiv"].getElementsByTagName("svg")[0]
             this.$store.commit('setSVGDOM', svgDOM)
             const menuHeight = document.getElementById("menu").clientHeight
@@ -201,7 +197,19 @@ export default {
                     const nodeText = node.getElementsByTagName("text")[0]
                     nodeText.classList.toggle("focusNodeText")
                 })
-            });
+            });            
+            if(focusPackages.length > 0){
+                const clusters = this.$refs["svgdiv"].getElementsByClassName("cluster");
+                const focusedCluster = Array.from(clusters).filter(c => focusPackages.includes(c.getElementsByTagName("title")[0].innerHTML) )
+                focusedCluster.forEach(fc => {
+                    const polygon = fc.getElementsByTagName("polygon")[0]
+                    polygon.classList.toggle("focusedPackages")
+                    const text = fc.getElementsByTagName("text")[0]
+                    text.classList.toggle("focusedPackages")
+                })
+            }
+
+            // Array.from(nodes).forEach(node =>)
             svgDOM.addEventListener("mousedown", e => {
                 this.isMouseDown = true;
                 this.preXPos = e.offsetX
@@ -225,8 +233,8 @@ export default {
                 this.isMouseDown = false
             })
             svgDOM.addEventListener("wheel", e => {
-                const scaleFactor = 1.01;
-                const scale = Math.pow(scaleFactor, e.deltaY < 0 ? 1 : -1);
+                const scaleFactor = 1.05;
+                const scale = Math.pow(scaleFactor, e.deltaY < 0 ? -1 : 1);
                 const [minx, miny, w, h] =  this.getViewBox(svgDOM)
 
                 const sx = e.offsetX/svgDOM.clientWidth
@@ -408,11 +416,16 @@ text{
     font-size: 1.5em;
     font-weight: 600;
 }
-
+polygon.focusedPackages{
+    stroke-width: 0.1em;
+    stroke: #EECC22;
+}
+text.focusedPackages{
+    fill: #EECC22 !important;
+}
 .cluster > text{
     font-size: 1.75em;
     fill: rgb(181, 200, 214);
     font-weight: bold;
-    text-decoration:underline;
 }
 </style>
